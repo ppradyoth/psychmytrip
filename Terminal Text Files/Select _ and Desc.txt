@@ -1,0 +1,306 @@
+Last login: Thu Jul  1 11:04:54 on console
+ppradyoth@Pradyoths-MacBook-Air ~ % mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+ppradyoth@Pradyoths-MacBook-Air ~ % show databases;
+zsh: command not found: show
+ppradyoth@Pradyoths-MacBook-Air ~ % mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+ppradyoth@Pradyoths-MacBook-Air ~ % mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.24 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| company            |
+| dbmslabexercises   |
+| information_schema |
+| mysql              |
+| performance_schema |
+| psychmytrip        |
+| sys                |
++--------------------+
+8 rows in set (0.11 sec)
+
+mysql> use psychmytrip;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_psychmytrip |
++-----------------------+
+| Customer              |
+| Employee              |
+| empsal                |
+| Expenses              |
+| officeexp             |
+| Partners              |
+| profdisplay           |
+| TripPackages          |
++-----------------------+
+8 rows in set (0.00 sec)
+
+mysql> desc Customer;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Cust_No   | int         | NO   | PRI | NULL    |       |
+| Cust_Name | varchar(20) | YES  |     | NULL    |       |
+| P_ID      | int         | YES  | MUL | NULL    |       |
+| Emp_ID    | int         | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc Employee;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Emp_ID       | int         | NO   | PRI | NULL    |       |
+| Emp_Name     | varchar(20) | YES  |     | NULL    |       |
+| Age          | int         | YES  |     | NULL    |       |
+| Salary       | int         | YES  |     | NULL    |       |
+| Designation  | varchar(20) | YES  |     | NULL    |       |
+| Date_of_Join | date        | YES  |     | NULL    |       |
+| Manager_ID   | int         | YES  |     | NULL    |       |
+| Part_No      | int         | YES  | MUL | NULL    |       |
+| Emp_Rating   | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+mysql> desc empsal;
++----------------+---------------+------+-----+---------+-------+
+| Field          | Type          | Null | Key | Default | Extra |
++----------------+---------------+------+-----+---------+-------+
+| Total_Sal_2020 | decimal(32,0) | YES  |     | NULL    |       |
++----------------+---------------+------+-----+---------+-------+
+1 row in set (0.01 sec)
+
+mysql> desc Expenses;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Sl_no         | int         | YES  |     | NULL    |       |
+| Exp_name      | varchar(20) | YES  |     | NULL    |       |
+| Cost_per_year | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc officeexp;
++----------------------+---------------+------+-----+---------+-------+
+| Field                | Type          | Null | Key | Default | Extra |
++----------------------+---------------+------+-----+---------+-------+
+| Total_OfficeExp_2020 | decimal(32,0) | YES  |     | NULL    |       |
++----------------------+---------------+------+-----+---------+-------+
+1 row in set (0.01 sec)
+
+mysql> desc Partners;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Part_No    | int         | NO   | PRI | NULL    |       |
+| Part_Name  | varchar(20) | YES  |     | NULL    |       |
+| Part_Stake | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc profdisplay;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| P_Name       | varchar(20) | YES  |     | NULL    |       |
+| PackageCount | bigint      | NO   |     | 0       |       |
+| Price        | int         | YES  |     | NULL    |       |
+| Profit       | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc TripPackages;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| P_ID           | int         | NO   | PRI | NULL    |       |
+| P_Name         | varchar(20) | YES  |     | NULL    |       |
+| Destination    | varchar(20) | YES  |     | NULL    |       |
+| Number_of_Days | int         | YES  |     | NULL    |       |
+| Price          | int         | YES  |     | NULL    |       |
+| Profit         | int         | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> select * from Customer;
++---------+-------------+------+--------+
+| Cust_No | Cust_Name   | P_ID | Emp_ID |
++---------+-------------+------+--------+
+|       1 | Manjesh     |   16 |     12 |
+|       2 | Yadava      |   18 |     11 |
+|       3 | Kumar       |    7 |     10 |
+|       4 | Joshi       |   14 |     12 |
+|       5 | Nidhima     |    5 |     11 |
+|       6 | Diya        |   12 |     10 |
+|       7 | Eshaan      |   15 |     10 |
+|       8 | Jitendra    |    2 |     11 |
+|       9 | Madhushree  |   17 |     12 |
+|      10 | Binod       |   11 |     10 |
+|      11 | Vaishnavi   |   13 |     12 |
+|      12 | Rakshith    |   13 |     11 |
+|      13 | Hrishikesh  |    3 |     10 |
+|      14 | Chandan     |    9 |     11 |
+|      15 | Naveen      |    6 |     12 |
+|      16 | Rajesh      |    1 |     10 |
+|      17 | Sharath     |    6 |     11 |
+|      18 | Pratima     |    7 |     12 |
+|      19 | Raghavendra |   15 |     10 |
+|      20 | Adeep       |   16 |     11 |
+|      21 | Holla       |    4 |     12 |
+|      22 | Amaan       |    7 |     10 |
+|      23 | Arya        |    4 |     11 |
+|      24 | Srushti     |   12 |     12 |
+|      25 | Bhat        |   18 |     10 |
+|      26 | Sindhu      |    8 |     11 |
+|      27 | Bindu       |    9 |     12 |
+|      28 | Mary        |   10 |     10 |
+|      29 | Goku        |   11 |     11 |
+|      30 | Vegeta      |   14 |     12 |
+|      31 | Sujan       |    4 |     10 |
+|      32 | Neha        |    3 |     11 |
++---------+-------------+------+--------+
+32 rows in set (0.00 sec)
+
+mysql> select * from Employee;
++--------+-----------+------+--------+--------------------+--------------+------------+---------+------------+
+| Emp_ID | Emp_Name  | Age  | Salary | Designation        | Date_of_Join | Manager_ID | Part_No | Emp_Rating |
++--------+-----------+------+--------+--------------------+--------------+------------+---------+------------+
+|      1 | Akash     |   45 | 214286 | Manager            | 2005-05-10   |          1 |       1 |          5 |
+|      2 | Ramesh    |   42 | 214286 | Manager            | 2005-05-10   |          2 |       1 |          5 |
+|      3 | Suresh    |   40 | 214286 | Manager            | 2005-05-10   |          3 |       1 |          5 |
+|      4 | Ganesh    |   35 |  44000 | Security           | 2009-09-12   |          1 |       1 |          5 |
+|      5 | Govinda   |   30 |  71200 | Travel Agent       | 2010-08-22   |          2 |       1 |          4 |
+|      6 | Sebastian |   27 |  70400 | Travel Agent       | 2015-06-30   |          3 |       1 |          3 |
+|      7 | Anvitha   |   25 |  90000 | Receptionist       | 2017-06-30   |          1 |       2 |          4 |
+|      8 | Suzie     |   29 | 150000 | Trip Planner       | 2018-04-06   |          2 |       2 |          4 |
+|      9 | Arun      |   22 | 124286 | Trip Manager       | 2020-01-25   |          1 |       2 |          3 |
+|     10 | Ansari    |   32 | 175714 | Customer Executive | 2013-02-19   |          3 |       2 |          5 |
+|     11 | Angel     |   31 | 171429 | Customer Executive | 2014-04-19   |          1 |       2 |          5 |
+|     12 | Bharath   |   28 | 167143 | Customer Executive | 2019-04-22   |          2 |       2 |          3 |
++--------+-----------+------+--------+--------------------+--------------+------------+---------+------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from Packages;
+ERROR 1146 (42S02): Table 'psychmytrip.packages' doesn't exist
+mysql> select * from TripPackages;
++------+--------------------+------------------+----------------+--------+--------+
+| P_ID | P_Name             | Destination      | Number_of_Days | Price  | Profit |
++------+--------------------+------------------+----------------+--------+--------+
+|    1 | 4P:Dandeli         | Dandeli          |              5 |  60000 |  20000 |
+|    2 | 6P:Dandeli         | Dandeli          |              5 |  84000 |  30000 |
+|    3 | Honeymoon:Paris    | Paris            |              9 | 480000 | 180000 |
+|    4 | Honeymoon:Andaman  | Andaman&Nicobar  |              9 | 300000 | 110000 |
+|    5 | Honeymoon:Bali     | Bali             |              9 | 400000 | 190000 |
+|    6 | Honeymoon:Maldives | Maldives         |              9 | 340000 | 160000 |
+|    7 | Honeymoon:Monaco   | Monaco           |              9 | 500000 | 230000 |
+|    8 | 2P:Manali          | Manali           |              6 |  50000 |  10000 |
+|    9 | 2P:Kedarnath       | Kedarnath        |              5 |  40000 |   9000 |
+|   10 | 2P:Mumbai          | Mumbai           |              5 |  70000 |  14000 |
+|   11 | 2P:Delhi           | Delhi            |              5 |  65000 |  15000 |
+|   12 | 10P:HimalayaTrek   | Himachal Pradesh |             10 | 800000 | 300000 |
+|   13 | 2P:HimalayaTrek    | Himachal Pradesh |             10 | 200000 |  50000 |
+|   14 | 2P:Goa             | Goa              |              6 |  18000 |   4000 |
+|   15 | 4P:Shirdi          | Shirdi           |              4 |  20000 |   5000 |
+|   16 | 2P:Ooty            | Ooty             |              3 |  10000 |   3000 |
+|   17 | 2P:Kodaikanal      | Kodaikanal       |              4 |  16000 |   5000 |
+|   18 | 2P:MysuruLocalTour | Mysuru           |              3 |   8000 |   4000 |
++------+--------------------+------------------+----------------+--------+--------+
+18 rows in set (0.00 sec)
+
+mysql> select * from Partners;
++---------+-----------+------------+
+| Part_No | Part_Name | Part_Stake |
++---------+-----------+------------+
+|       1 | Sharma    |         50 |
+|       2 | Rohit     |         50 |
++---------+-----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from empsal;
++----------------+
+| Total_Sal_2020 |
++----------------+
+|        1707030 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from officeexp;
++----------------------+
+| Total_OfficeExp_2020 |
++----------------------+
+|               293799 |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from Expenses;
++-------+-------------+---------------+
+| Sl_no | Exp_name    | Cost_per_year |
++-------+-------------+---------------+
+|     1 | Electricity |          6000 |
+|     2 | Water Bill  |          1000 |
+|     3 | WiFi        |          4800 |
+|     4 | Rent        |         80000 |
+|     5 | Food&misc   |        133333 |
+|     6 | Tax         |         33333 |
+|     7 | Phone Bill  |          2000 |
+|     8 | New items   |         33333 |
++-------+-------------+---------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from profdisplay;
++--------------------+--------------+--------+--------+
+| P_Name             | PackageCount | Price  | Profit |
++--------------------+--------------+--------+--------+
+| 4P:Dandeli         |            1 |  60000 |  20000 |
+| 6P:Dandeli         |            1 |  84000 |  30000 |
+| Honeymoon:Paris    |            2 | 480000 | 180000 |
+| Honeymoon:Andaman  |            3 | 300000 | 110000 |
+| Honeymoon:Bali     |            1 | 400000 | 190000 |
+| Honeymoon:Maldives |            2 | 340000 | 160000 |
+| Honeymoon:Monaco   |            3 | 500000 | 230000 |
+| 2P:Manali          |            1 |  50000 |  10000 |
+| 2P:Kedarnath       |            2 |  40000 |   9000 |
+| 2P:Mumbai          |            1 |  70000 |  14000 |
+| 2P:Delhi           |            2 |  65000 |  15000 |
+| 10P:HimalayaTrek   |            2 | 800000 | 300000 |
+| 2P:HimalayaTrek    |            2 | 200000 |  50000 |
+| 2P:Goa             |            2 |  18000 |   4000 |
+| 4P:Shirdi          |            2 |  20000 |   5000 |
+| 2P:Ooty            |            2 |  10000 |   3000 |
+| 2P:Kodaikanal      |            1 |  16000 |   5000 |
+| 2P:MysuruLocalTour |            2 |   8000 |   4000 |
++--------------------+--------------+--------+--------+
+18 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+ppradyoth@Pradyoths-MacBook-Air ~ % 
+ppradyoth@Pradyoths-MacBook-Air ~ % 
+Saving session...
+...copying shared history...
+...saving history...truncating history files...
+...completed.
+
+[Process completed]
+
