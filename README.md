@@ -1,4 +1,4 @@
-# psychmytrip
+# Psych My Trip
 
 This is a MySQL Database Management Systems Project by Pradyoth P, N Aditya Bhat, Rakesh R and Pannaga GR.
 
