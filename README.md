@@ -6,5 +6,5 @@ This was created as a part of the course Database Management Systems Laboratory 
 
 <embed src="psychmytrip/PSYCH MY TRIP_Presentation.pdf" type="application/pdf">
 
-<object data="psychmytrip/PSYCH MY TRIP_Presentation.pdf" type="application/pdf" width="100%"> 
+<object data="A2_Psych_My_Trip_IS4L02_Project_Report.pdf" type="application/pdf" width="100%"> 
 </object>
