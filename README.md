@@ -4,3 +4,5 @@ This was a MySQL Database Management Systems Project by Pradyoth P, N Aditya Bha
 
 This was created as a part of the course Database Management Systems Laboratory at The National Institute of Engineering, Mysuru.
 
+<embed src="PSYCH MY TRIP_Presentation.pdf" type="application/pdf">
+
